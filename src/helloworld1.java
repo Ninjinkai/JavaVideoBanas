@@ -10,5 +10,6 @@ public class helloworld1 {
 		int integerTwo = integerOne + 1;
 		integerTwo--;
 		System.out.println(integerTwo);
+		System.out.println(integerOne);
 	}
 }
