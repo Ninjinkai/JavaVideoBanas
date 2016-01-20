@@ -12,6 +12,8 @@ public class JavaLessonTwo {
 			
 			int numEntered2 = numberEntered * 2;
 			System.out.println("Doubled: " + numEntered2);
+			
+			System.out.println("Max: " + Math.max(numberEntered, numEntered2));
 		}
 		else {
 			System.out.println("Enter an integer.");
