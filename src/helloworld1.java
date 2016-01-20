@@ -8,7 +8,7 @@ public class helloworld1 {
 		
 		int integerOne = 22;
 		int integerTwo = integerOne + 1;
-		integerTwo--;
+		integerTwo++;
 		System.out.println(integerTwo);
 		System.out.println(integerOne);
 	}
