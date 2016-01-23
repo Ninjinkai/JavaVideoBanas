@@ -13,5 +13,14 @@ public class JavaVideoTen {
 		Monsters[3] = new MonsterTwo(900, 25, 1, "George");
 		
 		MonsterTwo.redrawBoard();
+		
+		for (MonsterTwo m : Monsters) {
+			if (m.isAlive()) {
+				int arrayItemIndex = ArrayUtils.indexOf(Monsters, m);
+				m.moveMonster(Monsters, arrayItemIndex);
+			}
+		}
+		
+		MonsterTwo.redrawBoard();
 	}
 }

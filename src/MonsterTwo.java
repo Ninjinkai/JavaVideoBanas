@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import org.apache.commons.lang3.ArrayUtils;
 
 public class MonsterTwo {
 	
@@ -170,6 +171,76 @@ public class MonsterTwo {
 		MonsterTwo Frank = new MonsterTwo();
 		System.out.println(Frank.attack);
 
+	}
+
+	public void moveMonster(MonsterTwo[] monster, int arrayItemIndex) {
+		boolean isSpaceOpen = true;
+		int maxXBoardSpace = battleBoard.length - 1;
+		int maxYBoardSpace = battleBoard[0].length - 1;
+		
+		while (isSpaceOpen) {
+			int randMoveDirection = (int) (Math.random() * 4);
+			int randMoveDistance = (int) (Math.random() * (this.getMovement() + 1));
+			System.out.println(randMoveDistance + " " + randMoveDirection);
+			
+			battleBoard[this.xPos][this.yPos] = '*';
+			
+			if (randMoveDirection == 0) {
+				if ((this.yPos - randMoveDistance) < 0) {
+					this.yPos = 0;
+				}
+				else {
+					this.yPos = this.yPos - randMoveDistance;
+				}
+			}
+			else if (randMoveDirection == 1) {
+				if ((this.xPos + randMoveDistance) > maxXBoardSpace) {
+					this.xPos = maxXBoardSpace;
+				}
+				else {
+					this.xPos = this.xPos + randMoveDistance;
+				}
+			}
+			else if (randMoveDirection == 2) {
+				if ((this.yPos + randMoveDistance) > maxYBoardSpace) {
+					this.yPos = maxYBoardSpace;
+				}
+				else {
+					this.yPos = this.yPos + randMoveDistance;
+				}
+			}
+			else {
+				if ((this.xPos - randMoveDistance) < 0) {
+					this.xPos = 0;
+				}
+				else {
+					this.xPos = this.xPos - randMoveDistance;
+				}
+			}
+			
+			for (int i = 0; i < monster.length; i++) {
+				if (i == arrayItemIndex) {
+					continue;
+				}
+				
+				if (onMySpace(monster, i, arrayItemIndex)) {
+					isSpaceOpen = true;
+					break;
+				}
+				else {
+					isSpaceOpen = false;
+				}
+			}
+		} //End while
+		
+		battleBoard[this.xPos][this.yPos] = nameChar1;
+	}
+
+	public boolean onMySpace(MonsterTwo[] monster, int indexToCheck1, int indexToCheck2) {
+		if((monster[indexToCheck1].xPos == monster[indexToCheck2].xPos) && (monster[indexToCheck1].yPos == monster[indexToCheck2].yPos)) {
+			return true;
+		}
+		return false;
 	}
 
 }
