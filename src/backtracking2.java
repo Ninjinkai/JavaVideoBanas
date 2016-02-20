@@ -53,7 +53,7 @@ public class backtracking2 {
 		if ((G[i][j]) == 0) {
 //			Is new new node NOT adjacent to all other nodes in the independent set?
 			for (int k = 0; k < n; k++) {
-				if ((G[j][k] == 1) && (independent[k] == 1)) {
+				if ((G[k][j] == 1) && (independent[k] == 1)) {
 //					The new node is adjacent to another node in the independent set, don't add it.
 					return false;
 				}
